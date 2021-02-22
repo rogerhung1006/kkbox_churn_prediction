@@ -12,6 +12,13 @@ After identifying the potential churners, I will introduce the Survival Analysis
 The data I will be using for this project is from KKBOX. KKBOX is Asia’s leading music streaming service, holding the world’s most comprehensive Asia-Pop music library with over 30 million tracks. They offer a generous, unlimited version of their service to millions of people, supported by advertising and paid subscriptions. After initial data processing, the contains 1,704,672 entires and 15 columns.
 
 - msno: user id
+- msno
+- city
+- bd: age
+- gender
+- registered_via: registration method
+- registration_init_time: format %Y%m%d
+- expiration_date: format %Y%m%d, taken as a snapshot at which the member.csv is extracted. Not representing the actual churn behavior.
 - payment_method_id: payment method
 - payment_plan_days: length of membership plan in days
 - plan_list_price: in New Taiwan Dollar (NTD)
