@@ -2,8 +2,8 @@
 ## User churn prediction and prevention of an online music streaming service
 ## Table of contents
   * [Introduction](#Introduction) 
-  * [Part 2. What is RFM Analysis?](#part-2-what-is-rfm-analysis-)
-  * [Part 3. Feature Engineering through RFM Analysis](#part-3-feature-engineering-through-rfm-analysis)
+  * [Dataset](#Dataset)
+  * [User churn prediction](#User-churn-prediction)
   * [Part 4. Segmentation by K-Means Clustering](#part-4-segmentation-by-k-means-clustering)
   * [Part 5. Interpretation of Clusters](#part-5-interpretation-of-clusters)
   * [Part 6. Customer Profiling and Suggestion](#part-6-customer-profiling-and-suggestion)
