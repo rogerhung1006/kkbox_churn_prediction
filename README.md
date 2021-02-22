@@ -1,5 +1,5 @@
 # Will they go or will they stay?
-## User churn prediction and prevention of an online music streaming platform
+## User churn prediction and prevention of an online music streaming service
 
 ## Introduction 
 Building up and keeping a loyal customer can be challenging for any company, especially when customers are free to choose from various providers within a product category. Furthermore, retaining existing customers is generally more cost-effective than acquiring new ones. For this reason, evaluating user retention is crucial for business. It is essential to measure the level of customer satisfaction and measure the number of clients that will potentially stop the contract or make purchases with a company or service.
