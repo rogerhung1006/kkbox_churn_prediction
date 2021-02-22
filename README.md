@@ -9,10 +9,9 @@ Customer churn, also known as customer attrition, is the percentage of customers
 After identifying the potential churners, I will introduce the Survival Analysis and Customer Life Time Value Analysis. Why bother? It would be great to know every customer who will churn, but how much insight would that information really bring? And how would you know when and what to focus on if you wanted to keep them and how much you could spend to keep them before having them as a customer turned into a loss? Our churn prediction model provides no clear answer as to what time scale it is predicting for. And this is when Survival Analysis and Customer Life Time Value Analysis come into play. The former allows us to model the time to an event(churn). The latter gives us crucial insights into how much money we should be spending on acquiring the customers by calculating how much value they'll bring to the business in the long run. Rather than just racing to keep my head above water, I would like to understand which customers I should be focusing on and, more importantly, why I should be focusing on them. Let's begin by looking into the dataset to predict churn of KKBOX's paid users!
 
 ## Dataset
-The data I will be using for this project is from KKBOX. KKBOX is Asia’s leading music streaming service, holding the world’s most comprehensive Asia-Pop music library with over 30 million tracks. They offer a generous, unlimited version of their service to millions of people, supported by advertising and paid subscriptions. After initial data processing, the contains 1,704,672 entires and 15 columns.
+The data I will be using for this project is from KKBOX. KKBOX is Asia’s leading music streaming service, holding the world’s most comprehensive Asia-Pop music library with over 30 million tracks. They offer a generous, unlimited version of their service to millions of people, supported by advertising and paid subscriptions. After initial data processing, I have two data sets, user_sample_data and user_log. The former contains 1,704,672 entires and 15 columns, and the latter contains
 
 - msno: user id
-- msno
 - city
 - bd: age
 - gender
@@ -27,6 +26,17 @@ The data I will be using for this project is from KKBOX. KKBOX is Asia’s leadi
 - transaction_date: format %Y%m%d
 - membership_expire_date: format %Y%m%d
 - is_cancel: whether or not the user canceled the membership in this transaction.
+
+
+- msno: user id
+- date: format %Y%m%d
+- num_25: # of songs played less than 25% of the song length
+- num_50: # of songs played between 25% to 50% of the song length
+- num_75: # of songs played between 50% to 75% of of the song length
+- num_985: # of songs played between 75% to 98.5% of the song length
+- num_100: # of songs played over 98.5% of the song length
+- num_unq: # of unique songs played
+- total_secs: total seconds played
 
 
 ## User churn prediction
