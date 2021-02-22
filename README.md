@@ -1,5 +1,13 @@
 # Will they go or will they stay?
 ## User churn prediction and prevention of an online music streaming service
+## Table of contents
+  * [Introduction](#Introduction) 
+  * [Part 2. What is RFM Analysis?](#part-2-what-is-rfm-analysis-)
+  * [Part 3. Feature Engineering through RFM Analysis](#part-3-feature-engineering-through-rfm-analysis)
+  * [Part 4. Segmentation by K-Means Clustering](#part-4-segmentation-by-k-means-clustering)
+  * [Part 5. Interpretation of Clusters](#part-5-interpretation-of-clusters)
+  * [Part 6. Customer Profiling and Suggestion](#part-6-customer-profiling-and-suggestion)
+  * [Part 7. The Potential Problem for the Business](#part-7-the-potential-problem-for-the-business)
 
 ## Introduction 
 Building up and keeping a loyal customer can be challenging for any company, especially when customers are free to choose from various providers within a product category. Furthermore, retaining existing customers is generally more cost-effective than acquiring new ones. For this reason, evaluating user retention is crucial for business. It is essential to measure the level of customer satisfaction and measure the number of clients that will potentially stop the contract or make purchases with a company or service.
