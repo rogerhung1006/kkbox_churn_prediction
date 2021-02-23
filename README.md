@@ -201,7 +201,13 @@ I first compute the historical CLV, which sums revenue of all past transactions 
 
 #### Traditional CLV
 CLV = Average Revenue * Monthly Retention Rate / Monthly Churn Rate <br>
-Using this CLV formula, we can take into account all possible changes of revenue during a specific period of time. In this project, I do this by creating monthly cohorts and their retention rate. Note that I didn't include the user acquisition cost and the discount rate for simplicity. We should do so if we have those data at hand. In this project, I derived the retention rate by performing a cohort analysis by acquisition date.
+Using this CLV formula, we can take into account all possible changes of revenue during a specific period of time. In this project, I do this by creating monthly cohorts and their retention rate. Note that I didn't include the user acquisition cost and the discount rate for simplicity. We should do so if we have those data at hand. In this project, I derived the retention rate by performing a cohort analysis by acquisition date, which is shown in the following graph.
+<p align="center">	
+	<img align="middle" width=700 src="images/clv1.png">
+</p>
+<p align="center">
+  <i>Figure 11.</i> 
+</p>
 
 ## Conclusion
 In this project, I start off performing churn prediction with several machine learning models, proceed with the survival analysis and finish the project with customer lifetime value calculation. By leveraging the insights drawn from these analyses, we are able to come up with more accurate user targeting strategies. From the churn prediction process, we know what kind of users are more likely to churn by investigating each feature's effect on churning. By performing survival analysis, we obtain deep insights into customer relations since it is possible to model when a churn event will take place and not just if it will take place. Lastly, customer lifetime value gives us a clear look at the benefit of acquiring and keeping any given customer. Not all customers are created equal. In fact, the top 1% of e-commerce customers are worth up to 18 times more than average customers. For simplicity, I didn't consider the cost of acquisition(COC), which is extremely important when it comes to calculating a precise CLV. Trying to manage customer churn is no easy task. However, we can still uncover a good number of insights that allow us to drive strategies and make informed decisions based on data. These insights will enable us to understand our users when it comes to churning and building alert systems and campaigns. 
