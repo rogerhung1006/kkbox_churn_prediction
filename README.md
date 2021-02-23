@@ -123,7 +123,16 @@ This cohort analysis represents the limited use case of the potential of the sur
 	<img align="middle" width=700 src="images/cph1.png">
 </p>
 <p align="center">
-  <i>Figure 5.</i> 
+  <i>Figure 6.</i> 
 </p>
 
 In a cox proportional hazards model, coefficients are interpreted similar to a logistic regression. From the untransformed coefficient we can only draw conclusions about the direction of the effect. Looking at the coefficient for `is_auto_renew` I see that the risk of churning is lower for those who activate auto renewal service to those who don't. By transforming them using the exponential function, interpretation gets easier. Luckily, the model's summary already does the dirty work for us. We can find the transformed coefficients at the `exp(coef)` column, which are called the hazard ratio. The hazard to churn decreases by roughly 75 percent for users who activate auto renewal service to those who don't. For continuous covariates, interpretation changes slightly. For example, A one-unit increase in `uniq_rate` (a ratio of unique songs and all songs that a user has listened to) increases the hazard of churning by a factor of one point two five.
+
+<p align="center">	
+	<img align="middle" width=700 src="images/cph2.png">
+</p>
+<p align="center">
+  <i>Figure 7.</i> 
+</p>
+
+It's clear that users that enjoy the whole songs(or at least 50%) without skipping the song are more likely to stick around. Well, it makes sense to me that users keeping switching the songs without actually listening them have worse retention.
