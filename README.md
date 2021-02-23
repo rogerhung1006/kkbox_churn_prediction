@@ -64,7 +64,13 @@ I create the following features:
 For more detailed information, please check out my jupyter notebook.
 
 ### Model results
-For this project, I used four classification models. One simple linear classification model: Logistic Regression, and three non-linear tree-based models: Random Forest, Gradient Boosted tree, and Extreme Gradient Boosting tree. Here are the results 
+For this project, I used four classification models. One simple linear classification model: Logistic Regression, and three non-linear tree-based models: Random Forest, Gradient Boosted tree, and Extreme Gradient Boosting tree. Here are the results:
+<p align="center">	
+	<img align="middle" width=700 src="images/kmf1.png">
+</p>
+<p align="center">
+  <i>Figure 1.</i> 
+</p>
 
 
 We see that XGBoost is the game winner, with Logistic Regression being the runner-up (much to my surprise). XGBoost has been proving its effectiveness on Data Science projects for a while, and, in this project, it provided the best results among the models. For that reason, XGBoost algorithm would be our choice for the churn prediction model. According to Chen and Guestrin, the most important advantage of XGBoost is its scalability, which makes the technique adaptable to all sorts of different problems. XGBoost is an optimized version of the gradient boosting algorithm in terms of speed, handling missing values, and avoiding overfitting. For those who are interested in knowing more about the modeling as well as feature selection process, please check out the code. I also tried using the resampling methods to deal with the imbalance classification problem and for better prediction, but the results turned out to be not that satisfactory.
@@ -79,11 +85,17 @@ The measure of interest in a survival analysis is the survival function. This fu
 Also we would need to bring up the concept of censored data. Censoring is a special case of missing data. The kind of censoring we are concerned with most often is random type I right-censoring. This means that a subject's event can only be observed if it occurs before a certain point in time. In the case of churn prediction, churn must happen before the current point in time to be observed. If it hasn't happened yet, we cannot know whether a person is going to churn in the future. We do, however, know that, for the time under consideration, a person has not yet churned. This is more information than completely missing data. Since customers enter our database at different points in time, censoring times can vary between subjects.
 
 <p align="center">	
-	<img align="middle" width=700 src="images/kmf.png">
+	<img align="middle" width=700 src="images/kmf1.png">
 </p>
 <p align="center">
-  <i>Figure 1.</i> 
+  <i>Figure 2.</i> 
 </p>
 
 The median survival time is 2623, that is, about 50 percent of the users do not churn before they reach a tenure duration of 2623 days. The median survival time is the time where a horizontal line at 0.5 intersects the survival curve. The counterpart to the survival function is the cumulative hazard function. It describes the cumulative risk, or the probability that the customer will have churned, up until time t.
+<p align="center">	
+	<img align="middle" width=700 src="images/kmf2.png">
+</p>
+<p align="center">
+  <i>Figure 3.</i> 
+</p>
 
