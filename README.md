@@ -25,7 +25,7 @@ After identifying the potential churners, I will introduce the Survival Analysis
 Compared with churn prediction, survival analysis is rarely known by people but an extremely helpful tool. I will spend more time going through all processes in this project. OK, Let's begin by looking into the dataset to predict the churn of KKBOX's paid users!
 
 ## Dataset
-The data I will be using for this project is from KKBOX. KKBOX is Asia’s leading music streaming service, holding the world’s most comprehensive Asia-Pop music library with over 30 million tracks. They offer a generous, unlimited version of their service to millions of people, supported by advertising and paid subscriptions. After initial data processing, I have two data sets, user_sample_data and user_log. The former contains 1,704,672 entires and 15 columns, and the latter contains 18,396,362 entires and 9 columns.
+The data I will be using for this project is from KKBOX. KKBOX is Asia’s leading music streaming service, holding the world’s most comprehensive Asia-Pop music library with over 30 million tracks. They offer a generous, unlimited version of their service to millions of people, supported by advertising and paid subscriptions. After initial data processing and transforming, I have two data sets, user_sample_data and user_log_sample. The former contains 1,704,672 entires and 19 columns, and the latter contains 1,704,672 entires and 21 columns.
 
 ### user_sample_data
 - msno: user id
@@ -44,9 +44,9 @@ The data I will be using for this project is from KKBOX. KKBOX is Asia’s leadi
 - membership_expire_date: format %Y%m%d
 - is_cancel: whether or not the user canceled the membership in this transaction.
 
-### user_log
-- msno: user id
-- date: format %Y%m%d
+### user_log_sample
+The original `user_log` data set is fairly large, and contains the following extra columns. For simplicity and efficiency, I will provide the `user_log_sample`, which has already been preprocessed and joined with the aggregated `user_sample_data`. I have included my data tweaking process in the notebook for your reference. 
+
 - num_25: # of songs played less than 25% of the song length
 - num_50: # of songs played between 25% to 50% of the song length
 - num_75: # of songs played between 50% to 75% of of the song length
