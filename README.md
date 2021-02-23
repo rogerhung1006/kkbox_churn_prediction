@@ -78,17 +78,24 @@ We see that XGBoost is the game winner, with Logistic Regression being the runne
 
 ### Interpretation
 <p align="center">	
-	<img align="middle" width=700 src="images/model_result.png">
+	<img align="middle" width=700 src="images/FI.png">
 </p>
 <p align="center">
   <i>Figure 1-1.</i> 
 </p>
-
+<br>
 <p align="center">	
-	<img align="middle" width=700 src="images/dependency_plot.png">
+	<img align="middle" width=700 src="images/PI.png">
 </p>
 <p align="center">
   <i>Figure 1-2.</i> 
+</p>
+<br>
+<p align="center">	
+	<img align="middle" width=700 src="images/partial_denpendency_xgb.png">
+</p>
+<p align="center">
+  <i>Figure 1-3.</i> 
 </p>
 
 ## Survival Analysis 
