@@ -66,7 +66,7 @@ For more detailed information, please check out my jupyter notebook.
 ### Model results
 For this project, I used four classification models. One simple linear classification model: Logistic Regression, and three non-linear tree-based models: Random Forest, Gradient Boosted tree, and Extreme Gradient Boosting tree. Here are the results:
 <p align="center">	
-	<img align="middle" width=700 src="images/kmf1.png">
+	<img align="middle" width=700 src="images/model_result.png">
 </p>
 <p align="center">
   <i>Figure 1.</i> 
@@ -92,10 +92,56 @@ Also we would need to bring up the concept of censored data. Censoring is a spec
 </p>
 
 The median survival time is 2623, that is, about 50 percent of the users do not churn before they reach a tenure duration of 2623 days. The median survival time is the time where a horizontal line at 0.5 intersects the survival curve. The counterpart to the survival function is the cumulative hazard function. It describes the cumulative risk, or the probability that the customer will have churned, up until time t.
+
 <p align="center">	
-	<img align="middle" width=700 src="images/kmf2.png">
+	<img align="middle" width=700 src="images/hazrd_function.png">
 </p>
 <p align="center">
   <i>Figure 3.</i> 
 </p>
 
+Recall that we are estimating cumulative hazard functions, thus we know the rate of change of this curve is an estimate of the hazard function. The hazard rate, also called force of mortality or instantaneous event rate, describes the risk that an event will occur in a small interval around time t, given that the event has not yet happened. Since the true form of the survival function is rarely known, a part of survival analysis is concerned with its estimation. Additionally, the sum of estimates is much more stable than the point-wise estimates.
+
+<p align="center">	
+	<img align="middle" width=700 src="images/kmf2.png">
+</p>
+<p align="center">
+  <i>Figure 4.</i> 
+</p>
+We have two survival curves , one for each cohort. From the curves, it is evident that the users, who have activated the auto renewal service, have better retention as compared to the users who have not activated the service. At any point t across the timeline, the survival probability of the cohort in purple is less than the cohort in green. For the cohort in purple, the survival probability is decreasing with high rate between 500-1000 days after registration and it gets relatively better after that; however, for the green cohort, the rate of decrease in survival rate is fairly constant and flat. Therefore, for the cohort , which has not activated the auto renewal service, efforts should be made to retain the users in their first 500-1000 days. Here the difference between survival functions is very obvious, and performing a statistical test seems pedantic. If the curves are more similar, or we possess less data, we may be interested in performing a statistical test. We can do more such cohort analysis from the survival curves of the different cohorts, say gender.
+
+<p align="center">	
+	<img align="middle" width=700 src="images/kmf3.png">
+</p>
+<p align="center">
+  <i>Figure 5.</i> 
+</p>
+
+This cohort analysis represents the limited use case of the potential of the survival analysis because we are using it for the aggregated level of the data. In order to check the effect of multiple user characteristics on the risk of churn and create the survival curves for even the individual users, we will leverage the power of Cox proportional hazards model. The idea behind Cox proportional hazard model is that the log-hazard of an individual is a linear function of their covariates and a population-level baseline hazard that changes over time.
+
+<p align="center">	
+	<img align="middle" width=700 src="images/cph1.png">
+</p>
+<p align="center">
+  <i>Figure 6.</i> 
+</p>
+
+In a cox proportional hazards model, coefficients are interpreted similar to a logistic regression. From the untransformed coefficient we can only draw conclusions about the direction of the effect. Looking at the coefficient for `is_auto_renew` I see that the risk of churning is lower for those who activate auto renewal service to those who don't. By transforming them using the exponential function, interpretation gets easier. Luckily, the model's summary already does the dirty work for us. We can find the transformed coefficients at the `exp(coef)` column, which are called the hazard ratio. The hazard to churn decreases by roughly 75 percent for users who activate auto renewal service to those who don't. For continuous covariates, interpretation changes slightly. For example, A one-unit increase in `uniq_rate` (a ratio of unique songs and all songs that a user has listened to) increases the hazard of churning by a factor of one point two five.
+
+<p align="center">	
+	<img align="middle" width=700 src="images/cph2.png">
+</p>
+<p align="center">
+  <i>Figure 7.</i> 
+</p>
+
+It's clear that users that enjoy the whole songs(or at least 50%) without skipping the song are more likely to stick around. Well, it makes sense to me that users keeping switching the songs without actually listening them have worse retention. We can compare whether the churn generation process of the two populations are equal bu using `logrank_test`. According to the document, the logrank test statistic is calculated from the differences between the observed churns for a group and expected churns, under the null hypothesis that all groups share the same survival curve, summed across all ordered churns times. Here we have a p-value smaller than 0.01, which is statistically significant.
+
+<p align="center">	
+	<img align="middle" width=700 src="images/cph3.png">
+</p>
+<p align="center">
+  <i>Figure 8.</i> 
+</p>
+
+As expected, users that are more active and more transactions have better retention.
