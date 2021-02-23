@@ -135,4 +135,13 @@ In a cox proportional hazards model, coefficients are interpreted similar to a l
   <i>Figure 7.</i> 
 </p>
 
-It's clear that users that enjoy the whole songs(or at least 50%) without skipping the song are more likely to stick around. Well, it makes sense to me that users keeping switching the songs without actually listening them have worse retention.
+It's clear that users that enjoy the whole songs(or at least 50%) without skipping the song are more likely to stick around. Well, it makes sense to me that users keeping switching the songs without actually listening them have worse retention. We can compare whether the churn generation process of the two populations are equal bu using `logrank_test`. According to the document, the logrank test statistic is calculated from the differences between the observed churns for a group and expected churns, under the null hypothesis that all groups share the same survival curve, summed across all ordered churns times. Here we have a p-value smaller than 0.01, which is statistically significant.
+
+<p align="center">	
+	<img align="middle" width=700 src="images/cph3.png">
+</p>
+<p align="center">
+  <i>Figure 8.</i> 
+</p>
+
+As expected, users that are more active and more transactions have better retention.
