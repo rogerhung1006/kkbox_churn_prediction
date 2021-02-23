@@ -51,4 +51,13 @@ Note that the integer features num_25, num_50, num_75, num_985, and num_100 tell
 ## User churn prediction
 In this section, my goal is to predict whether or not a customer will churn based on various features that I created previously. I will be using supervised machine learning techniques to make predictions. Before the modeling process, I also conducted a simple exploratory data analysis and feature engineering to create insightful new features. Notice that I won't dig too deep in terms of data exploration. I am doing the complete and extensive exploratory data analysis of this data on another project, which will be posted soon.
 
-
+### Feature engineering 
+I create the following features:
+Age_Range bucket(age_bin): I created buckets for the age-range 5-11(child), 12-18(teenagers), 19-25(college students), 26-35(newly grad and early career professionals), 36-45(mid-aged), 46-60, and 60-100.
+days_to_first_trans: The time between a user's registration and his or her first transaction with the company
+ days_between_trans: The sum of time that a user was not in contract with the company during the observation period. Suppose there are five days after the termination/expiration of his first contract and before his second contract, and ten days after the termination/expiration of his third contract and before his fourth contract, the value of days_between_trans is then 15.  
+tenure: The number of days between the registration date and the membership expiration date, provided that this user had churned. If the user didn't churn, the tenure is then defined as the number of days between the registration date and the snapshot date.
+no_records: The number of records a user has in our data set, which, to some extent, represents how frequently a user is interacting with the company.
+uniq_rate: The ratio between the number of unique songs a user had listened to and the number of total songs he/she had listen to.
+listening_type: There are three types of listeners, loyalist_type, normal_type, and switcher_type. If the percentage of the number of songs a user played for >75% of their total duration over the number of all songs played is higher than 80%, the user is defined as a loyalist type of listener.
+For more detailed information, please check out my jupyter notebook.
