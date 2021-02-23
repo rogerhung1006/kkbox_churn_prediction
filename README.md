@@ -78,7 +78,7 @@ We see that XGBoost is the game winner, with Logistic Regression being the runne
 
 ### Interpretation
 <p align="center">	
-	<img align="middle" width=700 src="images/FI.png">
+	<img align="middle" width=700 src="images/fI.png">
 </p>
 <p align="center">
   <i>Figure 1-1.</i> 
