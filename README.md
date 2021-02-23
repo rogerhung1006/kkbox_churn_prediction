@@ -1,5 +1,5 @@
 # Will they go or will they stay?
-## User churn prediction and prevention of an online music streaming service
+## User Churn Prediction and Prevention of an Online Music Streaming Service
 <p align="center">	
 	<img align="middle" src="images/cover.jpeg">
 </p>
