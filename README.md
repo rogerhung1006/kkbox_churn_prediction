@@ -118,3 +118,12 @@ We have two survival curves , one for each cohort. From the curves, it is eviden
 </p>
 
 This cohort analysis represents the limited use case of the potential of the survival analysis because we are using it for the aggregated level of the data. In order to check the effect of multiple user characteristics on the risk of churn and create the survival curves for even the individual users, we will leverage the power of Cox proportional hazards model. The idea behind Cox proportional hazard model is that the log-hazard of an individual is a linear function of their covariates and a population-level baseline hazard that changes over time.
+
+<p align="center">	
+	<img align="middle" width=700 src="images/cph1.png">
+</p>
+<p align="center">
+  <i>Figure 5.</i> 
+</p>
+
+In a cox proportional hazards model, coefficients are interpreted similar to a logistic regression. From the untransformed coefficient we can only draw conclusions about the direction of the effect. Looking at the coefficient for `is_auto_renew` I see that the risk of churning is lower for those who activate auto renewal service to those who don't. By transforming them using the exponential function, interpretation gets easier. Luckily, the model's summary already does the dirty work for us. We can find the transformed coefficients at the `exp(coef)` column, which are called the hazard ratio. The hazard to churn decreases by roughly 75 percent for users who activate auto renewal service to those who don't. For continuous covariates, interpretation changes slightly. For example, A one-unit increase in `uniq_rate` (a ratio of unique songs and all songs that a user has listened to) increases the hazard of churning by a factor of one point two five.
