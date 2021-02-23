@@ -1,7 +1,7 @@
 # Will they go or will they stay?
 ## User churn prediction and prevention of an online music streaming service
 <p align="center">	
-	<img align="middle" width=700 src="images/cover.jpeg">
+	<img align="middle" src="images/cover.jpeg">
 </p>
 <p align="center">
   <i>Photo by Mantas Hesthaven on Unsplash</i> 
@@ -25,7 +25,7 @@ After identifying the potential churners, I will introduce the Survival Analysis
 Compared with churn prediction, survival analysis is rarely known by people but an extremely helpful tool. I will spend more time going through all processes in this project. OK, Let's begin by looking into the dataset to predict the churn of KKBOX's paid users!
 
 ## Dataset
-The data I will be using for this project is from KKBOX. KKBOX is Asia’s leading music streaming service, holding the world’s most comprehensive Asia-Pop music library with over 30 million tracks. They offer a generous, unlimited version of their service to millions of people, supported by advertising and paid subscriptions. After initial data processing, I have two data sets, user_sample_data and user_log. The former contains 1,704,672 entires and 15 columns, and the latter contains 18,396,362 entires and 9 columns.
+The data I will be using for this project is from KKBOX. KKBOX is Asia’s leading music streaming service, holding the world’s most comprehensive Asia-Pop music library with over 30 million tracks. They offer a generous, unlimited version of their service to millions of people, supported by advertising and paid subscriptions. After initial data processing and transforming, I have two data sets, user_sample_data and user_log_sample. The former contains 1,704,672 entires and 19 columns, and the latter contains 1,704,672 entires and 21 columns.
 
 ### user_sample_data
 - msno: user id
@@ -44,9 +44,9 @@ The data I will be using for this project is from KKBOX. KKBOX is Asia’s leadi
 - membership_expire_date: format %Y%m%d
 - is_cancel: whether or not the user canceled the membership in this transaction.
 
-### user_log
-- msno: user id
-- date: format %Y%m%d
+### user_log_sample
+The original `user_log` data set is fairly large, and contains the following extra columns. For simplicity and efficiency, I will provide the `user_log_sample`, which has already been preprocessed and joined with the aggregated `user_sample_data`. I have included my data tweaking process in the notebook for your reference. 
+
 - num_25: # of songs played less than 25% of the song length
 - num_50: # of songs played between 25% to 50% of the song length
 - num_75: # of songs played between 50% to 75% of of the song length
@@ -59,6 +59,14 @@ Note that the integer features num_25, num_50, num_75, num_985, and num_100 tell
 
 ## User churn prediction
 In this section, my goal is to predict whether or not a customer will churn based on various features that I created previously. I will be using supervised machine learning techniques to make predictions. Before the modeling process, I also conducted a simple exploratory data analysis and feature engineering to create insightful new features. Notice that I won't dig too deep in terms of data exploration. I am doing the complete and extensive exploratory data analysis of this data on another project, which will be posted soon.
+
+### Percentage of Churned Users vs Non-Churned Users
+<p align="center">	
+	<img align="middle" width=700 src="images/num_churn.png">
+</p>
+<p align="center">
+  <i>Figure 0.</i> 
+</p>
 
 ### Feature engineering 
 I create the following features:
@@ -107,9 +115,11 @@ Well, it seems that we have a pretty similar result, which is excellent. For tho
 <p align="center">
   <i>Figure 1-3.</i> 
 </p>
-Partial dependence plots (PDP) show the dependence between the target variable and a set of features of interest, marginalizing over the values of all other features (the complement features). PDP can also show the type of relationship, such as a step function, curvilinear, linear, etc. Figure 1-3 shows that the longer the tenure, the lower the probability that a user will churn. This trend goes up to roughly 2500 days, then flattens after that point. For those who have a longer time before making his or her first transaction, the model predicts on average a high probability of churn. It comes with no surprise that the user who has the auto-renewal service activated has a lower chance of churning.<br>
+Partial dependence plots (PDP) show the dependence between the target variable and a set of features of interest, marginalizing over the values of all other features (the complement features). PDP can also show the type of relationship, such as a step function, curvilinear, linear, etc. Figure 1-3 shows that the longer the tenure, the lower the probability that a user will churn. This trend goes up to roughly 3000 days, then slightly flattens after that point. For those who have a longer time before making his or her first transaction, the model predicts on average a high probability of churn. It comes with no surprise that the user who has the auto-renewal service activated has a lower chance of churning.
+<br>
+<br>
 
-Interestingly, the predicted probability of churning plummets at the average payment of 150 NTD and bounces back after that. Further examination reveals that 150 NTD is the monthly price for those willing to activate the auto-renewal service. Bearing this information in mind, I would say the result then makes much sense to me. The partial dependence function at a particular feature value represents the average prediction if we force all data points to assume that feature value. The main advantage is that laypeople usually understand the idea of PDPs quickly. Note that the assumption of independence is the biggest issue with PDP. It is assumed that the feature for which the partial dependence is computed is not correlated with other features. As I have mentioned in the previous section, most of the features in our data are not correlated and, therefore, we don't need to worry too much about this issue for now.
+Interestingly, the predicted probability of churning remains fairly flat up to the average payment of 150 NTD and goes up after that. Further examination reveals that 150 NTD is the monthly price for those willing to activate the auto-renewal service. Bearing this information in mind, I would say the result then makes much sense to me. The partial dependence function at a particular feature value represents the average prediction if we force all data points to assume that feature value. The main advantage is that laypeople usually understand the idea of PDPs quickly. Note that the assumption of independence is the biggest issue with PDP. It is assumed that the feature for which the partial dependence is computed is not correlated with other features. As I have mentioned in the previous section, most of the features in our data are not correlated and, therefore, we don't need to worry too much about this issue for now.
 <br>
 
 ## Survival Analysis 
@@ -217,4 +227,4 @@ Using this CLV formula, we can take into account all possible changes of revenue
 </p>
 
 ## Conclusion
-In this project, I start off performing churn prediction with several machine learning models, proceed with the survival analysis and finish the project with customer lifetime value calculation. By leveraging the insights drawn from these analyses, we are able to come up with more accurate user targeting strategies. From the churn prediction process, we know what kind of users are more likely to churn by investigating each feature's effect on churning. By performing survival analysis, we obtain deep insights into customer relations since it is possible to model when a churn event will take place and not just if it will take place. Lastly, customer lifetime value gives us a clear look at the benefit of acquiring and keeping any given customer. Not all customers are created equal. In fact, the top 1% of e-commerce customers are worth up to 18 times more than average customers. For simplicity, I didn't consider the cost of acquisition(COC), which is extremely important when it comes to calculating a precise CLV. Trying to manage customer churn is no easy task. However, we can still uncover a good number of insights that allow us to drive strategies and make informed decisions based on data. These insights will enable us to understand our users when it comes to churning and building alert systems and campaigns. There is still lots of work done to make this project more reliable and complete. For example, I will try to interpret the model results with other model-agnostic methods, such as explaining individual predictions of black-box machine learning with LIME. Also, I will try performing a customer segmentation based on part of the results in this project.
+In this project, I start off performing churn prediction with several machine learning models, proceed with the survival analysis and finish the project with customer lifetime value calculation. By leveraging the insights drawn from these analyses, we are able to come up with more accurate user targeting strategies. From the churn prediction process, we know what kind of users are more likely to churn by investigating each feature's effect on churning. By performing survival analysis, we obtain deep insights into customer relations since it is possible to model when a churn event will take place and not just if it will take place. Lastly, customer lifetime value gives us a clear look at the benefit of acquiring and keeping any given customer. Not all customers are created equal. In fact, the top 1% of e-commerce customers are worth up to 18 times more than average customers. For simplicity, I didn't consider the cost of acquisition(COC), which is extremely important when it comes to calculating a precise CLV. Trying to manage customer churn is no easy task. However, we can still uncover a good number of insights that allow us to drive strategies and make informed decisions based on data. These insights will enable us to understand our users when it comes to churning and building alert systems and campaigns. There is still lots of work needed to be done to make this project more reliable and complete. In the future, I will try to interpret the model results with other model-agnostic methods, such as explaining individual predictions of black-box machine learning with LIME. Also, I will try performing a customer segmentation based on part of the results in this project.
