@@ -94,7 +94,7 @@ Also we would need to bring up the concept of censored data. Censoring is a spec
 The median survival time is 2623, that is, about 50 percent of the users do not churn before they reach a tenure duration of 2623 days. The median survival time is the time where a horizontal line at 0.5 intersects the survival curve. The counterpart to the survival function is the cumulative hazard function. It describes the cumulative risk, or the probability that the customer will have churned, up until time t.
 
 <p align="center">	
-	<img align="middle" width=700 src="images/hazard_function.png">
+	<img align="middle" width=700 src="images/hazrd_function.png">
 </p>
 <p align="center">
   <i>Figure 3.</i> 
