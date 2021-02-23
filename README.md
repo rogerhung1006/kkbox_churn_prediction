@@ -1,6 +1,6 @@
 # Will they go or will they stay?
 ## User churn prediction and prevention of an online music streaming service
-## Table of contents
+## *Table of contents*
   * [Introduction](#Introduction) 
   * [Dataset](#Dataset)
   * [User churn prediction](#User-churn-prediction)
