@@ -166,12 +166,14 @@ As expected, users that are more active and more transactions have better retent
 </p>
 
 
-## Customer Life Time Value 
+## Customer Lifetime Value 
+Customer Lifetime Value (CLV) calculation is defined as the amount of profit associated with a customer over a period of time (Gupta et al. 2006). CLV helps you predict future revenue and measure long-term business success. More to the point, CLV helps you estimate how much you should invest in order to retain a customer. Knowing the lifetime value of a customer allows you to answer the question such as What amount of money can you afford to spend on the marketing campaigns. There are several ways to measure customer lifetime value, and the choice depends on your resources and your business. For simplicity, I select two simple-to-implement methods in this project.
+
 #### Historical CLV
 I first compute the historical CLV, which sums revenue of all past transactions of a user and multiply by profit margin. In this project we don't have data regarding profit margin and will hence ignore this element. However, this approach doesn't consider changes in user behavior. So if users change their interests and the way they purchase, it will affect the outcome. 
 
 #### Traditional CLV
-CLV = Average Revenue * Monthly Retention Rate / Monthly Churn Rate
+CLV = Average Revenue * Monthly Retention Rate / Monthly Churn Rate <br>
 Using this CLV formula, we can take into account all possible changes of revenue during a specific period of time. In this project, I do this by creating monthly cohorts and their retention rate. Note that I didn't include the user acquisition cost and the discount rate for simplicity. We should do so if we have those data at hand.
 
 ## Conclusion
