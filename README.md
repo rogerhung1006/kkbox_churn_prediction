@@ -157,4 +157,13 @@ As expected, users that are more active and more transactions have better retent
   <i>Figure 9.</i> 
 </p>
 
+<br>
+<p align="center">	
+	<img align="middle" width=700 src="images/cph_pred_median.png">
+</p>
+<p align="center">
+  <i>Figure 10.</i> 
+</p>
+
+
 ## Customer Life Time Value 
