@@ -77,6 +77,19 @@ For this project, I used four classification models. One simple linear classific
 We see that XGBoost is the game winner, with Logistic Regression being the runner-up (much to my surprise). XGBoost has been proving its effectiveness on Data Science projects for a while, and, in this project, it provided the best results among the models. For that reason, XGBoost algorithm would be our choice for the churn prediction model. According to Chen and Guestrin, the most important advantage of XGBoost is its scalability, which makes the technique adaptable to all sorts of different problems. XGBoost is an optimized version of the gradient boosting algorithm in terms of speed, handling missing values, and avoiding overfitting. For those who are interested in knowing more about the modeling as well as feature selection process, please check out the code. I also tried using the resampling methods to deal with the imbalance classification problem and for better prediction, but the results turned out to be not that satisfactory.
 
 ### Interpretation
+<p align="center">	
+	<img align="middle" width=700 src="images/model_result.png">
+</p>
+<p align="center">
+  <i>Figure 1-1.</i> 
+</p>
+
+<p align="center">	
+	<img align="middle" width=700 src="images/dependency_plot.png">
+</p>
+<p align="center">
+  <i>Figure 1-2.</i> 
+</p>
 
 ## Survival Analysis 
 Why do we need this? In customer relation management, however, we are often concerned with censored data. That is, the customer journeys end at the current point in time just because we cannot see what happens in the future. This is a kind of missing data that our previous models cannot handle. And this is where survival analysis comes into play. Survival analysis is suited for situations where for some observations an event has not yet happened, but may happen at some point in time (In this case, whether a user will churn). Survival analysis allows us to model the time to an event, also called failure or survival time. This avoids a loss of information due to aggregation. In the end, survival analysis allows us to obtain deep insights into customer relations since it is possible to model when an event will take place and not just if it will take place. If we predict that a certain customer is likely to end her contract within the next three months, special actions can be taken to keep her from churning. Survival Analysis is a set of methods used in the life sciences (mostly Epidemiology and Pharma research) to determine the probability of patient cohort survival over time. It’s a very large body of work with a great many intricate and statistically sophisticated tools, but I will only be using two of them — the Kaplan–Meier Estimator and the Cox Proportional Hazards Model.
@@ -174,7 +187,7 @@ I first compute the historical CLV, which sums revenue of all past transactions 
 
 #### Traditional CLV
 CLV = Average Revenue * Monthly Retention Rate / Monthly Churn Rate <br>
-Using this CLV formula, we can take into account all possible changes of revenue during a specific period of time. In this project, I do this by creating monthly cohorts and their retention rate. Note that I didn't include the user acquisition cost and the discount rate for simplicity. We should do so if we have those data at hand.
+Using this CLV formula, we can take into account all possible changes of revenue during a specific period of time. In this project, I do this by creating monthly cohorts and their retention rate. Note that I didn't include the user acquisition cost and the discount rate for simplicity. We should do so if we have those data at hand. In this project, I derived the retention rate by performing a cohort analysis by acquisition date.
 
 ## Conclusion
 In this project, I start off performing churn prediction with several machine learning models, proceed with the survival analysis and finish the project with customer lifetime value calculation. By leveraging the insights drawn from these analyses, we are able to come up with more accurate user targeting strategies. From the churn prediction process, we know what kind of users are more likely to churn by investigating each feature's effect on churning. By performing survival analysis, we obtain deep insights into customer relations since it is possible to model when a churn event will take place and not just if it will take place. Lastly, customer lifetime value gives us a clear look at the benefit of acquiring and keeping any given customer. Not all customers are created equal. In fact, the top 1% of e-commerce customers are worth up to 18 times more than average customers. For simplicity, I didn't consider the cost of acquisition(COC), which is extremely important when it comes to calculating a precise CLV. Trying to manage customer churn is no easy task. However, we can still uncover a good number of insights that allow us to drive strategies and make informed decisions based on data. These insights will enable us to understand our users when it comes to churning and building alert systems and campaigns. 
