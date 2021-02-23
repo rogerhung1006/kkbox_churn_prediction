@@ -66,7 +66,7 @@ For more detailed information, please check out my jupyter notebook.
 ### Model results
 For this project, I used four classification models. One simple linear classification model: Logistic Regression, and three non-linear tree-based models: Random Forest, Gradient Boosted tree, and Extreme Gradient Boosting tree. Here are the results:
 <p align="center">	
-	<img align="middle" width=700 src="images/kmf1.png">
+	<img align="middle" width=700 src="images/model_result.png">
 </p>
 <p align="center">
   <i>Figure 1.</i> 
