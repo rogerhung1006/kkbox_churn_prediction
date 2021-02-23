@@ -19,8 +19,9 @@ After identifying the potential churners, I will introduce the Survival Analysis
 ## Dataset
 The data I will be using for this project is from KKBOX. KKBOX is Asia’s leading music streaming service, holding the world’s most comprehensive Asia-Pop music library with over 30 million tracks. They offer a generous, unlimited version of their service to millions of people, supported by advertising and paid subscriptions. After initial data processing, I have two data sets, user_sample_data and user_log. The former contains 1,704,672 entires and 15 columns, and the latter contains
 
+### user_sample_data
 - msno: user id
-- city
+- city: In total 21 cities and they are encoded by integers.
 - bd: age
 - gender
 - registered_via: registration method
@@ -35,7 +36,7 @@ The data I will be using for this project is from KKBOX. KKBOX is Asia’s leadi
 - membership_expire_date: format %Y%m%d
 - is_cancel: whether or not the user canceled the membership in this transaction.
 
-
+### user_log
 - msno: user id
 - date: format %Y%m%d
 - num_25: # of songs played less than 25% of the song length
@@ -45,7 +46,7 @@ The data I will be using for this project is from KKBOX. KKBOX is Asia’s leadi
 - num_100: # of songs played over 98.5% of the song length
 - num_unq: # of unique songs played
 - total_secs: total seconds played
-
+Note that the integer features num_25, num_50, num_75, num_985, and num_100 tell us the number of songs for this day that the user played for <25%, 25-50%, 50-75%, 75-98.5%, or >98.5% of their total duration.
 
 ## User churn prediction
 In this section, my goal is to predict whether or not a customer will churn based on various features that I created previously. I will be using supervised machine learning techniques to make predictions. Before the modeling process, I also conducted a simple exploratory data analysis and feature engineering to create insightful new features. Notice that I won't dig too deep in terms of data exploration. I am doing the complete and extensive exploratory data analysis of this data on another project, which will be posted soon.
