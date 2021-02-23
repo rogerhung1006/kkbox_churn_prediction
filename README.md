@@ -5,7 +5,7 @@
   * [Dataset](#Dataset)
   * [User churn prediction](#User-churn-prediction)
   * [Survival Analysis](#Survival-analysis)
-  * [Customer Life Time Value ](## Customer-life-time-value )
+  * [Customer Life Time Value ](#Customer-life-time-value )
   * [Conclusion](#Conclusion)
 
 ## Introduction 
@@ -148,7 +148,13 @@ It's clear that users that enjoy the whole songs(or at least 50%) without skippi
   <i>Figure 8.</i> 
 </p>
 
-As expected, users that are more active and more transactions have better retention.
+As expected, users that are more active and more transactions have better retention. What's more, we can create the survival curves for the individual users to help the further personized marketing strategy development.
 
+<p align="center">	
+	<img align="middle" width=700 src="images/cph4.png">
+</p>
+<p align="center">
+  <i>Figure 9.</i> 
+</p>
 
 ## Customer Life Time Value 
