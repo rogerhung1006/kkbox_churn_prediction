@@ -72,5 +72,18 @@ We see that XGBoost is the game winner, with Logistic Regression being the runne
 ### Interpretation
 
 ## Survival Analysis 
+How does this work? In customer relation management, however, we are often concerned with censored data. That is, the customer journeys end at the current point in time just because we cannot see what happens in the future. This is a kind of missing data that our previous models cannot handle. And this is where survival analysis comes into play. Survival analysis is suited for situations where for some observations an event has not yet happened, but may happen at some point in time (In this case, whether a user will churn). Survival analysis allows us to model the time to an event, also called failure or survival time. This avoids a loss of information due to aggregation. In the end, survival analysis allows us to obtain deep insights into customer relations since it is possible to model when an event will take place and not just if it will take place. If we predict that a certain customer is likely to end her contract within the next three months, special actions can be taken to keep her from churning. Survival Analysis is a set of methods used in the life sciences (mostly Epidemiology and Pharma research) to determine the probability of patient cohort survival over time. It’s a very large body of work with a great many intricate and statistically sophisticated tools, but I will only be using two of them — the Kaplan–Meier Estimator and the Cox Proportional Hazards Model.
 
+### Survival function
+The measure of interest in a survival analysis is the survival function. This function gives the probability that a customer will not churn in the period leading up to the time point t. To estimate the survival function, we will use the Kaplan-Meier Estimate in this project. It’s basically counting how many people has churn/not churned at each time point. For more information about this non-parametric method, please check [here](https://en.wikipedia.org/wiki/Kaplan%E2%80%93Meier_estimator).
+Also we would need to bring up the concept of censored data. Censoring is a special case of missing data. The kind of censoring we are concerned with most often is random type I right-censoring. This means that a subject's event can only be observed if it occurs before a certain point in time. In the case of churn prediction, churn must happen before the current point in time to be observed. If it hasn't happened yet, we cannot know whether a person is going to churn in the future. We do, however, know that, for the time under consideration, a person has not yet churned. This is more information than completely missing data. Since customers enter our database at different points in time, censoring times can vary between subjects.
+
+<p align="center">	
+	<img align="middle" width=700 src="images/kmf.png">
+</p>
+<p align="center">
+  <i>Figure 1.</i> 
+</p>
+
+The median survival time is 2623, that is, about 50 percent of the users do not churn before they reach a tenure duration of 2623 days. The median survival time is the time where a horizontal line at 0.5 intersects the survival curve. The counterpart to the survival function is the cumulative hazard function. It describes the cumulative risk, or the probability that the customer will have churned, up until time t.
 
