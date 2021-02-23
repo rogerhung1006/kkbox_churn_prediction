@@ -4,7 +4,7 @@
   * [Introduction](#Introduction) 
   * [Dataset](#Dataset)
   * [User churn prediction](#User-churn-prediction)
-  * [Part 4. Segmentation by K-Means Clustering](#part-4-segmentation-by-k-means-clustering)
+  * [Survival Analysis](#Survival-analysis)
   * [Part 5. Interpretation of Clusters](#part-5-interpretation-of-clusters)
   * [Part 6. Customer Profiling and Suggestion](#part-6-customer-profiling-and-suggestion)
   * [Part 7. The Potential Problem for the Business](#part-7-the-potential-problem-for-the-business)
@@ -62,3 +62,15 @@ I create the following features:
 - **uniq_rate**: The ratio between the number of unique songs a user had listened to and the number of total songs he/she had listen to.
 - **listening_type**: There are three types of listeners, loyalist_type, normal_type, and switcher_type. If the percentage of the number of songs a user played for >75% of their total duration over the number of all songs played is higher than 80%, the user is defined as a loyalist type of listener.
 For more detailed information, please check out my jupyter notebook.
+
+### Model results
+For this project, I used four classification models. One simple linear classification model: Logistic Regression, and three non-linear tree-based models: Random Forest, Gradient Boosted tree, and Extreme Gradient Boosting tree. Here are the results 
+
+
+We see that XGBoost is the game winner, with Logistic Regression being the runner-up (much to my surprise). XGBoost has been proving its effectiveness on Data Science projects for a while, and, in this project, it provided the best results among the models. For that reason, XGBoost algorithm would be our choice for the churn prediction model. According to Chen and Guestrin, the most important advantage of XGBoost is its scalability, which makes the technique adaptable to all sorts of different problems. XGBoost is an optimized version of the gradient boosting algorithm in terms of speed, handling missing values, and avoiding overfitting. For those who are interested in knowing more about the modeling as well as feature selection process, please check out the code. I also tried using the resampling methods to deal with the imbalance classification problem and for better prediction, but the results turned out to be not that satisfactory.
+
+### Interpretation
+
+## Survival Analysis 
+
+
