@@ -60,7 +60,7 @@ Note that the integer features num_25, num_50, num_75, num_985, and num_100 tell
 ## User churn prediction
 In this section, my goal is to predict whether or not a customer will churn based on various features that I created previously. I will be using supervised machine learning techniques to make predictions. Before the modeling process, I also conducted a simple exploratory data analysis and feature engineering to create insightful new features. Notice that I won't dig too deep in terms of data exploration. I am doing the complete and extensive exploratory data analysis of this data on another project, which will be posted soon.
 
-### Percentage of Churn Users vs Non-Churn Users
+### Percentage of Churned Users vs Non-Churned Users
 <p align="center">	
 	<img align="middle" width=700 src="images/num_churn.png">
 </p>
