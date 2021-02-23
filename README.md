@@ -119,6 +119,9 @@ We have two survival curves , one for each cohort. From the curves, it is eviden
 
 This cohort analysis represents the limited use case of the potential of the survival analysis because we are using it for the aggregated level of the data. In order to check the effect of multiple user characteristics on the risk of churn and create the survival curves for even the individual users, we will leverage the power of Cox proportional hazards model. The idea behind Cox proportional hazard model is that the log-hazard of an individual is a linear function of their covariates and a population-level baseline hazard that changes over time.
 
+
+### Cox Proportional Hazards Model
+
 <p align="center">	
 	<img align="middle" width=700 src="images/cph1.png">
 </p>
