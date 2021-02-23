@@ -83,6 +83,7 @@ We see that XGBoost is the game winner, with Logistic Regression being the runne
 <p align="center">
   <i>Figure 1-1.</i> 
 </p>
+First, we look a the impurity-based feature importances from the xgboost model. The higher the value, the more important the feature. A feature's importance is computed as the (normalized) total reduction of the criterion brought by that feature, which is also known as the Gini importance. We see that `tenure`, `avg_amount_paid`, `days_to_first_trans` etc. are listed in the top places. However, according to scikit learn documentation, the impurity-based feature importance has a potential problem of being computed on statistics derived from the training dataset: the importance can be high even for features that are not predictive of the target variable. Let's look at another metric to double-check our result.
 <br>
 <p align="center">	
 	<img align="middle" width=700 src="images/PI.png">
@@ -90,6 +91,8 @@ We see that XGBoost is the game winner, with Logistic Regression being the runne
 <p align="center">
   <i>Figure 1-2.</i> 
 </p>
+Well, it seems that we have a pretty similar result, which is excellent. For those who are not familiar with permutation feature importance, the permutation feature importance is defined to be the decrease in a model score when a single feature value is randomly shuffled. This procedure breaks the relationship between the feature and the target, thus the drop in the model score is indicative of how much the model depends on the feature. This method can be misleading when we have highly correlated features. Since most of our features are not highly correlated, with the exception of the average number of songs played and the average number of seconds played, this is not so much of a problem. To best interpret the result, let's now see the marginal effect one feature has on the predicted outcome.
+
 <br>
 <p align="center">	
 	<img align="middle" width=700 src="images/partial_denpendency_xgb.png">
@@ -97,6 +100,10 @@ We see that XGBoost is the game winner, with Logistic Regression being the runne
 <p align="center">
   <i>Figure 1-3.</i> 
 </p>
+Partial dependence plots (PDP) show the dependence between the target variable and a set of features of interest, marginalizing over the values of all other features (the complement features). PDP can also show the type of relationship, such as a step function, curvilinear, linear, etc. Figure 1-3 shows that the longer the tenure, the lower the probability that a user will churn. This trend goes up to roughly 2500 days, then flattens after that point. For those who have a longer time before making his or her first transaction, the model predicts on average a high probability of churn. It comes with no surprise that the user who has the auto-renewal service activated has a lower chance of churning.
+
+Interestingly, the predicted probability of churning plummets at the average payment of 150 NTD and bounces back after that. Further examination reveals that 150 NTD is the monthly price for those willing to activate the auto-renewal service. Bearing this information in mind, I would say the result then makes much sense to me. The partial dependence function at a particular feature value represents the average prediction if we force all data points to assume that feature value. The main advantage is that laypeople usually understand the idea of PDPs quickly. Note that the assumption of independence is the biggest issue with PDP. It is assumed that the feature for which the partial dependence is computed is not correlated with other features. As I have mentioned in the previous section, most of the features in our data are not correlated and, therefore, we don't need to worry too much about this issue for now.
+<br>
 
 ## Survival Analysis 
 Why do we need this? In customer relation management, however, we are often concerned with censored data. That is, the customer journeys end at the current point in time just because we cannot see what happens in the future. This is a kind of missing data that our previous models cannot handle. And this is where survival analysis comes into play. Survival analysis is suited for situations where for some observations an event has not yet happened, but may happen at some point in time (In this case, whether a user will churn). Survival analysis allows us to model the time to an event, also called failure or survival time. This avoids a loss of information due to aggregation. In the end, survival analysis allows us to obtain deep insights into customer relations since it is possible to model when an event will take place and not just if it will take place. If we predict that a certain customer is likely to end her contract within the next three months, special actions can be taken to keep her from churning. Survival Analysis is a set of methods used in the life sciences (mostly Epidemiology and Pharma research) to determine the probability of patient cohort survival over time. It’s a very large body of work with a great many intricate and statistically sophisticated tools, but I will only be using two of them — the Kaplan–Meier Estimator and the Cox Proportional Hazards Model.
