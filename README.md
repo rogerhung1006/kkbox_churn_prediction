@@ -83,6 +83,7 @@ We see that XGBoost is the game winner, with Logistic Regression being the runne
 <p align="center">
   <i>Figure 1-1.</i> 
 </p>
+First, we look a the impurity-based feature importances from the xgboost model. The higher the value, the more important the feature. A feature's importance is computed as the (normalized) total reduction of the criterion brought by that feature, which is also known as the Gini importance. We see that `tenure`, `avg_amount_paid`, `days_to_first_trans` etc. are listed in the top places. However, according to scikit learn documentation, the impurity-based feature importance has a potential problem of being computed on statistics derived from the training dataset: the importance can be high even for features that are not predictive of the target variable. Let's look at another metric to double-check our result.
 <br>
 <p align="center">	
 	<img align="middle" width=700 src="images/PI.png">
@@ -90,7 +91,8 @@ We see that XGBoost is the game winner, with Logistic Regression being the runne
 <p align="center">
   <i>Figure 1-2.</i> 
 </p>
-For those who are not familiar with permutation feature importance, the permutation feature importance is defined to be the decrease in a model score when a single feature value is randomly shuffled. This procedure breaks the relationship between the feature and the target, thus the drop in the model score is indicative of how much the model depends on the feature. This method can be misleading when we are having a highly correlated features. Since most of our features are not highlt correlated, with the exception of average number of songs played and the average number of seconds played, we don't need to worry about this problem.
+Well, it seems that we have a pretty similar result, which is excellent. For those who are not familiar with permutation feature importance, the permutation feature importance is defined to be the decrease in a model score when a single feature value is randomly shuffled. This procedure breaks the relationship between the feature and the target, thus the drop in the model score is indicative of how much the model depends on the feature. This method can be misleading when we have highly correlated features. Since most of our features are not highly correlated, with the exception of the average number of songs played and the average number of seconds played, this is not so much of a problem. To best interpret the result, let's now see the marginal effect one feature has on the predicted outcome.
+
 <br>
 <p align="center">	
 	<img align="middle" width=700 src="images/partial_denpendency_xgb.png">
