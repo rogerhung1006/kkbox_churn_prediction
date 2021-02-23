@@ -1,7 +1,7 @@
 # Will they go or will they stay?
 ## User churn prediction and prevention of an online music streaming service
 <p align="center">	
-	<img align="middle" width=700 src="images/cover.jpg">
+	<img align="middle" width=700 src="images/cover.jpeg">
 </p>
 <p align="center">
   <i>Photo by Mantas Hesthaven on Unsplash</i> 
