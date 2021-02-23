@@ -92,10 +92,20 @@ Also we would need to bring up the concept of censored data. Censoring is a spec
 </p>
 
 The median survival time is 2623, that is, about 50 percent of the users do not churn before they reach a tenure duration of 2623 days. The median survival time is the time where a horizontal line at 0.5 intersects the survival curve. The counterpart to the survival function is the cumulative hazard function. It describes the cumulative risk, or the probability that the customer will have churned, up until time t.
+
 <p align="center">	
-	<img align="middle" width=700 src="images/kmf2.png">
+	<img align="middle" width=700 src="images/hazard_function.png">
 </p>
 <p align="center">
   <i>Figure 3.</i> 
 </p>
 
+Recall that we are estimating cumulative hazard functions, thus we know the rate of change of this curve is an estimate of the hazard function. The hazard rate, also called force of mortality or instantaneous event rate, describes the risk that an event will occur in a small interval around time t, given that the event has not yet happened. Since the true form of the survival function is rarely known, a part of survival analysis is concerned with its estimation. Additionally, the sum of estimates is much more stable than the point-wise estimates.
+
+<p align="center">	
+	<img align="middle" width=700 src="images/kmf2.png">
+</p>
+<p align="center">
+  <i>Figure 4.</i> 
+</p>
+We have two survival curves , one for each cohort. From the curves, it is evident that the users, who have activated the auto renewal service, have better retention as compared to the users who have not activated the service. At any point t across the timeline, the survival probability of the cohort in purple is less than the cohort in green. For the cohort in purple, the survival probability is decreasing with high rate between 500-1000 days after registration and it gets relatively better after that; however, for the green cohort, the rate of decrease in survival rate is fairly constant and flat. Therefore, for the cohort , which has not activated the auto renewal service, efforts should be made to retain the users in their first 500-1000 days. Here the difference between survival functions is very obvious, and performing a statistical test seems pedantic. If the curves are more similar, or we possess less data, we may be interested in performing a statistical test. We can do more such cohort analysis from the survival curves of the different cohorts, say gender. 
