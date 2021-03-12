@@ -69,7 +69,7 @@ In this section, my goal is to predict whether or not a customer will churn base
 </p>
 
 ### Feature engineering 
-I create the following features:
+For interpretability and the predictive models' performance, I create the following metrics as the features for the models:
 - **Age_Range bucket(age_bin)**: I created buckets for the age-range 5-11(child), 12-18(teenagers), 19-25(college students), 26-35(newly grad and early career professionals), 36-45(mid-aged), 46-60, and 60-100.
 - **days_to_first_trans**: The time between a user's registration and his or her first transaction with the company
 - **days_between_trans**: The sum of time that a user was not in contract with the company during the observation period. Suppose there are five days after the termination/expiration of his first contract and before his second contract, and ten days after the termination/expiration of his third contract and before his fourth contract, the value of days_between_trans is then 15.  
